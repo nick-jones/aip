@@ -42,7 +42,7 @@ done:
   jne err                      /* if not we've consumed too little */
   cmp r9, 0x1                  /* was the last character a digit? */
   jne err                      /* if not we ended on a dot */
-  mov byte ptr [rsi + rbx], al /* move the final octent into 2nd arg */
+  mov byte ptr [rsi + rbx], al /* move the final octet into 2nd arg */
   mov eax, 0x0                 /* return value = 0, success */
   ret
 err:
