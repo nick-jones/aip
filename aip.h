@@ -1,1 +1,1 @@
-unsigned int aip_pton4(char *, unsigned long *);
+unsigned int aip_pton4(const char *, unsigned long *);
