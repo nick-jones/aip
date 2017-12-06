@@ -25,10 +25,24 @@ START_TEST(test_aip_pton4) {
 }
 END_TEST
 
+START_TEST(test_aip_ntop4) {
+  char formatted[AIP_V4_ADDRESSLEN];
+  ck_assert_uint_eq(aip_ntop4(817920, formatted), 0);
+  ck_assert_str_eq(formatted, "0.12.123.0");
+  ck_assert_uint_eq(aip_ntop4(2130706433, formatted), 0);
+  ck_assert_str_eq(formatted, "127.0.0.1");
+  ck_assert_uint_eq(aip_ntop4(0, formatted), 0);
+  ck_assert_str_eq(formatted, "0.0.0.0");
+  ck_assert_uint_eq(aip_ntop4(4294967295, formatted), 0);
+  ck_assert_str_eq(formatted, "255.255.255.255");
+}
+END_TEST
+
 Suite * aip_suite() {
   Suite *s = suite_create("aip");
   TCase *tc_core = tcase_create("core");
   tcase_add_test(tc_core, test_aip_pton4);
+  tcase_add_test(tc_core, test_aip_ntop4);
   suite_add_tcase(s, tc_core);
   return s;
 }
