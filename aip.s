@@ -54,7 +54,7 @@ _aip_ntop4:
   mov r8, 0x0                   /* output string position */
   mov r9, 0x0                   /* loop counter */
 loop:
-  rol edi, 0x8                  /* roll the next 8 bytes around */
+  rol edi, 0x8                  /* roll the next byte around */
   mov eax, edi                  /* we will preserve edi */
   and eax, 0xFF                 /* only interested in the first byte */
   mov edx, 0x0                  /* dividend = edx:eax */
